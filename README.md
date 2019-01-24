@@ -17,7 +17,26 @@ This package can be install with composer
 `composer required assoconnect/mapbox-token`
 
 ## usage
+<?php
 
+$guzzle = GuzzleHttp\Client();
+$client = new AssoConnect\SMoney\Client('YOUR S-MONEY ENDPOINT', 'YOUR S-MONEY TOKEN', $guzzle);
+
+// Create a temporary Mapbox token
+$scopes = [
+    'styles:read',
+    'styles:tiles',
+    'fonts:read',
+    'datasets:read',
+    'uploads:write',
+    'uploads:read',
+    'tokens:write',
+];
+
+$date = new \DateTime();
+$expires = $date->modify('+ 1 hour');
+
+$client->createTemporaryToken($scopes, $expires)->token;
 ````
 <?php
 
