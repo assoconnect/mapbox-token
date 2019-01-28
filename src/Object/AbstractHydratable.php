@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
+namespace AssoConnect\MapboxToken\Object;
+
 /**
  * Class AbstractHydratable
  *
- * Abstract base class for object to be hydrated with an associative array passed to the constructor.
+ * Abstract base class for object to be hydrated
+ * with an associative array passed to the constructor.
  */
-namespace AssoConnect\MapboxToken\Object;
-
 abstract class AbstractHydratable
 {
-
     public function __construct(iterable $params)
     {
         foreach ($params as $key => $value) {

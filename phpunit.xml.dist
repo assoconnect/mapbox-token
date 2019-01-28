@@ -2,7 +2,7 @@
 
 <phpunit>
     <php>
-        <env name="MAPBOX_USERNAME" value="https://api.mapbox.com/tokens/v2/{username}" />
+        <env name="MAPBOX_USERNAME" value="" />
         <env name="MAPBOX_TOKEN" value="" />
     </php>
     <testsuites>

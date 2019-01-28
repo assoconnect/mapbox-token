@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 namespace AssoConnect\MapboxToken;
 
 use AssoConnect\MapboxToken\Object\TemporaryToken;
@@ -53,7 +54,8 @@ class Client
         ];
 
         $res = $this->query($method, '/tokens/v2/' . $this->username, $data);
-        $data = json_decode($res->getBody(), true);
+        $data = json_decode($res->getBody()->__toString(), true);
+
         $params = [
             'token' => $data['token'],
             'expires' => $expires,
