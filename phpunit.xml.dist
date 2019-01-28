@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit>
+    <php>
+        <env name="MAPBOX_USERNAME" value="https://api.mapbox.com/tokens/v2/{username}" />
+        <env name="MAPBOX_TOKEN" value="" />
+    </php>
+    <testsuites>
+        <testsuite name="Mapbox PHP client">
+            <directory>tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
+</phpunit>
