@@ -17,10 +17,12 @@ This package can be install with composer
 `composer required assoconnect/mapbox-token`
 
 ## usage
+
+````
 <?php
 
 $guzzle = GuzzleHttp\Client();
-$client = new AssoConnect\MapboxToken\Client('YOUR MAPBOX USERNAME', 'YOUR MAPBOX TOKEN', $guzzle);
+$client = new AssoConnect\SMoney\Client('YOUR S-MONEY ENDPOINT', 'YOUR S-MONEY TOKEN', $guzzle);
 
 //Create a temporary token
 $scopes = [
@@ -37,3 +39,4 @@ $date = new \DateTime();
 $expires = $date->modify('+ 1 hour');
 
 $client->createTemporaryToken($scopes, $expires)->token; // New temporary Mapbox token
+````
