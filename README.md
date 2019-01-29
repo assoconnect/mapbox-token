@@ -4,19 +4,38 @@ PHP client for Mapbox Token API
 [![Build Status](https://travis-ci.org/assoconnect/mapbox-token.svg?branch=master)](https://travis-ci.org/assoconnect/mapbox-token)
 [![Coverage Status](https://coveralls.io/repos/github/assoconnect/mapbox-token/badge.svg?branch=master)](https://coveralls.io/github/assoconnect/mapbox-token?branch=master)
 
-The following features of the S-Money API are implemented:
+The following feature of the Mapbox API are implemented:
+- creation of a temporary token
 
 Feel free to submit a PR or contact us if you need a missing feature.
 
 The package uses [Guzzle](https://github.com/guzzle/guzzle) as an HTTP client.
 
-## installation
+## Installation
 This package can be install with composer
 
-`composer required assoconnect/mapbox-token`
+`composer require assoconnect/mapbox-token`
 
-## usage
+## Usage
 
 ````
+<?php
 
+$guzzle = new GuzzleHttp\Client();
+$client = new AssoConnect\MapboxToken\Client('YOUR MAPBOX USERNAME', 'YOUR MAPBOX TOKEN', $guzzle);
+
+// Create a temporary token
+$scopes = [
+    'styles:read',
+    'styles:tiles',
+    'fonts:read',
+    'datasets:read',
+    'uploads:write',
+    'uploads:read',
+    'tokens:write',
+];
+
+$expires = new \DateTime('+ 1 hour');
+
+$client->createTemporaryToken($scopes, $expires)->token; // New temporary Mapbox token
 ````
