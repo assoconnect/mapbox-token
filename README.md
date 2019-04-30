@@ -3,6 +3,7 @@ PHP client for Mapbox Token API
 
 [![Build Status](https://travis-ci.org/assoconnect/mapbox-token.svg?branch=master)](https://travis-ci.org/assoconnect/mapbox-token)
 [![Coverage Status](https://coveralls.io/repos/github/assoconnect/mapbox-token/badge.svg?branch=master)](https://coveralls.io/github/assoconnect/mapbox-token?branch=master)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=assoconnect_mapbox-token&metric=alert_status)](https://sonarcloud.io/dashboard?id=assoconnect_mapbox-token)
 
 The following feature of the Mapbox API are implemented:
 - creation of a temporary token
