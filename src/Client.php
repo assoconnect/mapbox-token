@@ -31,7 +31,10 @@ class Client
         $this->token = $token;
     }
 
-    protected function query(string $method, string $path, iterable $data = null) :ResponseInterface
+    /**
+     * @param array<string, mixed>|null $data
+     */
+    protected function query(string $method, string $path, ?array $data = null) :ResponseInterface
     {
         if ($method === 'POST') {
             return $this->client->request($method, 'https://api.mapbox.com' . $path . '?access_token=' . $this->token, [
@@ -44,7 +47,10 @@ class Client
         throw new \DomainException('Unsupported method');
     }
 
-    public function createTemporaryToken(iterable $scopes, \DateTime $expires) :TemporaryToken
+    /**
+     * @param list<string> $scopes
+     */
+    public function createTemporaryToken(array $scopes, \DateTimeImmutable $expires) :TemporaryToken
     {
         $method = 'POST';
 
@@ -54,13 +60,9 @@ class Client
         ];
 
         $res = $this->query($method, '/tokens/v2/' . $this->username, $data);
-        $data = json_decode($res->getBody()->__toString(), true);
+        /** @var array{token: string} $responseData */
+        $responseData = json_decode($res->getBody()->__toString(), true);
 
-        $params = [
-            'token' => $data['token'],
-            'expires' => $expires,
-        ];
-        $temporaryToken = new TemporaryToken($params);
-        return $temporaryToken;
+        return new TemporaryToken($responseData['token'], $expires);
     }
 }

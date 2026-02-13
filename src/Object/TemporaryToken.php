@@ -3,15 +3,11 @@
 declare(strict_types=1);
 namespace AssoConnect\MapboxToken\Object;
 
-class TemporaryToken extends AbstractHydratable
+class TemporaryToken
 {
-    /**
-     * @var string
-     */
-    public $token;
-
-    /**
-     * @var \DateTime
-     */
-    public $expires;
+    public function __construct(
+        public readonly string $token,
+        public readonly \DateTimeImmutable $expires,
+    ) {
+    }
 }

@@ -12,6 +12,12 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
-        "rector/rector": "^2.2"
+        "rector/rector": "^2.2",
+        "assoconnect/php-quality-config": "^2"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }

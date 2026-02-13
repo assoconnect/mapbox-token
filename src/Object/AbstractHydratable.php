@@ -11,10 +11,13 @@ namespace AssoConnect\MapboxToken\Object;
  */
 abstract class AbstractHydratable
 {
-    public function __construct(iterable $params)
+    /**
+     * @param array<string, mixed> $params
+     */
+    public function __construct(array $params)
     {
         foreach ($params as $key => $value) {
-            $this->$key = $value;
+            $this->{$key} = $value; /** @phpstan-ignore property.dynamicName */
         }
     }
 }

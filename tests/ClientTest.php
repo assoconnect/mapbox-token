@@ -13,14 +13,15 @@ class ClientTest extends TestCase
         $token = getenv('MAPBOX_TOKEN');
         $username = getenv('MAPBOX_USERNAME');
 
+        self::assertIsString($token);
+        self::assertIsString($username);
+
         $guzzleClient = new \GuzzleHttp\Client();
 
-        $client = new Client($username, $token, $guzzleClient);
-
-        return $client;
+        return new Client($username, $token, $guzzleClient);
     }
 
-    public function testCreateTemporaryToken()
+    public function testCreateTemporaryToken(): void
     {
         $client = $this->createClient();
 
@@ -34,10 +35,9 @@ class ClientTest extends TestCase
             'tokens:write',
         ];
 
-        $date = new \DateTime();
-        $expires = $date->modify('+ 1 hour');
+        $expires = new \DateTimeImmutable('+1 hour');
 
         $temporaryToken = $client->createTemporaryToken($scopes, $expires);
-        $this->assertNotNull($temporaryToken->token);
+        self::assertNotEmpty($temporaryToken->token);
     }
 }
